@@ -783,16 +783,16 @@ public class JournalDisplayContext {
 
 				Hits hits = indexer.search(searchContext);
 
-				int total = hits.getLength();
-
-				articleSearchContainer.setTotal(total);
-
-				List results = new ArrayList<>();
-
 				List<SearchResult> searchResults =
 					SearchResultUtil.getSearchResults(
 						hits, searchContext.getLocale(), _liferayPortletRequest,
 						_liferayPortletResponse);
+
+				List results = new ArrayList<>();
+
+				int total = searchResults.size();
+
+				articleSearchContainer.setTotal(total);
 
 				for (int i = 0; i < searchResults.size(); i++) {
 					SearchResult searchResult = searchResults.get(i);
